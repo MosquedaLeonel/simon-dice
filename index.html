@@ -6,8 +6,46 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body class="bg-dark">
+    <header class="bg-light">
+        <div class="container" >
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="alert alert-light" role="alert">
+                  <p id="estado">Toca "Empezar" para jugar.</p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="botones">
+                  <button type="button" class="btn btn-primary">Empezar</button>
+                </div>
+              </div>
+              <div class="col">
+                <div class="botones">
+                  <button type="button" class="btn btn-danger">Reiniciar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="borde-simon-dice">
+          <div id="0" class="cuadro rojo"></div>
+          <div id="1" class="cuadro azul"></div>
+          <div id="2" class="cuadro verde"></div>
+          <div id="3" class="cuadro amarillo"></div>
+          <div class="controles">
+            <div class="titulo">SIMON</div>
+            <div class="rondas inline">00</div>
+            <div class="led-green inline"></div>
+          </div>
+        </div>
+      </div>
+    </main>
     
     <script type="text/javascript" src='index.js'></script>
 </body>
