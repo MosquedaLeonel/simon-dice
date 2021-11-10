@@ -183,4 +183,27 @@ p {
     background-color: #A90;
     border-radius: 50%;
     box-shadow: #000 0 -1px 7px 1px, inset #660 0 -1px 9px, #DD0 0 2px 12px;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.rojo:active, .azul:active {
+    opacity: 1;
+    transition: opacity 500ms;
+    transform: translateY(2px);
+}
+
+.verde:active, .amarillo:active {
+    opacity: 1;
+    transition: opacity 500ms;
+    transform: translateY(-2px);
+}
+
+>>>>>>> Stashed changes
