@@ -1,76 +1,131 @@
-main .container {
+body {
+    background-image: radial-gradient( circle 610px at 5.2% 51.6%,  rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% );
+}
+
+.header-center {
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.container {
     margin: 0 auto;
     text-align: center;
 }
 
-.borde-simon-dice {
+p {
+    color: white;
+    font-size: 24px;
+}
+
+.border-game {
     margin: 0 auto;
     margin-top: 50px;
-    width: 600px;
     height: 600px;
-    border: solid 5px black;
+    width: 600px;
+    border: 5px solid black;
     border-radius: 100%;
 }
 
-.cuadro {
-    opacity: 0.7;
+.dashboard {
     margin: 0;
     float: left;
     position: relative;
-    width: 295px;
-    height: 295px;
-    border: solid 3px black;
+    width: 294px;
+    height: 294px;
+    border: 3px solid black;
+    z-index: 8;
+}
+
+.enabled {
+    opacity: 0.6;
     z-index: 8;
     transition: opacity 500ms;
 }
 
-.rojo {
-    background-color: #d60017;
+.red {
+    background-color: #D60017;
     border-radius: 100% 0 0 0;
-    transform: translateY(-2px);
 }
 
-.azul {
+.blue {
     background-color: #0017D6;
     border-radius: 0 100% 0 0;
-    transform: translateY(-2px);
 }
 
-.verde {
+.green {
     background-color: #17D600;
     border-radius: 0 0 0 100%;
-    transform: translateY(2px);
 }
 
-.amarillo {
+.yellow {
     background-color: #C2D600;
     border-radius: 0 0 100% 0;
-    transform: translateY(2px);
 }
 
-.rojo:hover, .azul:hover, .verde:hover, .amarillo:hover {
+.red:hover, .blue:hover, .green:hover, .yellow:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.6;
     transition: opacity 500ms;
 }
 
-.controles {
+.red:active, .blue:active {
+    transform: translateY(2px);
+    transition: transform 500ms;
+}
+
+.green:active, .yellow:active {
+    transform: translateY(-2px);
+    transition: transform 500ms;
+}
+
+.disabled {
+    opacity: 0.3;
+    transition: opacity 500ms;
+    cursor: not-allowed;
+}
+
+.red-disabled {
+    background-color: #D60017;
+    border-radius: 100% 0 0 0;
+}
+
+.blue-disabled {
+    background-color: #0017D6;
+    border-radius: 0 100% 0 0;
+}
+
+.green-disabled {
+    background-color: #17D600;
+    border-radius: 0 0 0 100%;
+}
+
+.yellow-disabled {
+    background-color: #C2D600;
+    border-radius: 0 0 100% 0;
+}
+
+.controls {
     width: 245px;
     height: 245px;
-    margin-left: 175px;
-    margin-top: 175px;
-    background-color: black;
-    border: solid 10px black;
+    border: 10px solid black;
+    margin-left: 168px;
+    margin-top: 168px;
     border-radius: 100%;
+    background-color: black;
     position: absolute;
     z-index: 10;
 }
 
-.titulo {
-    margin: 30px 0 10px 0;
-    font-size: 45px;
-    font-weight: bolder;
+.title {
     color: white;
+    margin-top: 30px;
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 10px;   
 }
 
 .inline {
@@ -78,8 +133,29 @@ main .container {
     vertical-align: middle;
 }
 
-.rondas {
-    color: white
+.rounds {
+    color: white;
+}
+
+.btn {
+    padding: 0;
+    margin: 0px;
+    margin-left: 30px;
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    border: none;
+}
+
+.btn:hover {
+    background: rgba(5,8,114,1);
+    color: white;
+    transition: 500ms;
+}
+
+.btn:active {
+    transform: translateY(4px);
+    transition: transform 500ms;
 }
 
 .led-red {
@@ -107,22 +183,4 @@ main .container {
     background-color: #A90;
     border-radius: 50%;
     box-shadow: #000 0 -1px 7px 1px, inset #660 0 -1px 9px, #DD0 0 2px 12px;
-}
-
-.botones {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-}
-
-.rojo:active, .azul:active {
-    opacity: 1;
-    transition: opacity 500ms;
-    transform: translateY(2px);
-}
-
-.verde:active, .amarillo:active {
-    opacity: 1;
-    transition: opacity 500ms;
-    transform: translateY(-2px);
 }

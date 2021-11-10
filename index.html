@@ -3,50 +3,40 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Simon Says!</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel='stylesheet' href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="node_modules/material-icons/iconfont/material-icons.css" rel="stylesheet">
 </head>
-<body class="bg-dark">
-    <header class="bg-light">
-        <div class="container" >
-            <div class="row">
-              <div class="col-sm-8">
-                <div class="alert alert-light" role="alert">
-                  <p id="estado">Toca "Empezar" para jugar.</p>
-                </div>
-              </div>
-              <div class="col">
-                <div class="botones">
-                  <button type="button" class="btn btn-primary">Empezar</button>
-                </div>
-              </div>
-              <div class="col">
-                <div class="botones">
-                  <button type="button" class="btn btn-danger">Reiniciar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-    </header>
+<body>
+  <header>
+    <div class="header-center">
+      <div class="box-state">
+        <p class="state">Press play to start game.</p>
+      </div>
+    </div>
+  </header>
 
     <main>
       <div class="container">
-        <div class="borde-simon-dice">
-          <div id="0" class="cuadro rojo"></div>
-          <div id="1" class="cuadro azul"></div>
-          <div id="2" class="cuadro verde"></div>
-          <div id="3" class="cuadro amarillo"></div>
-          <div class="controles">
-            <div class="titulo">SIMON</div>
-            <div class="rondas inline">00</div>
-            <div class="led-yellow inline"></div>
+        <div class="border-game">
+          <div id="red" class="dashboard disabled red-disabled"></div>
+          <div id="blue" class="dashboard disabled blue-disabled" ></div>
+          <div id="green" class="dashboard disabled green-disabled"></div>
+          <div id="yellow" class="dashboard disabled yellow-disabled"></div>
+          <div class="controls">
+            <div class="title">SIMON</div>
+            <div class="rounds inline">00</div>
+            <button class="btn inline">          
+              <span class="material-icons">play_circle_filled</span>
+            </button>
+            <div id="led" class="led-red inline"></div>
+            
           </div>
         </div>
       </div>
     </main>
-    
+
     <script type="text/javascript" src='index.js'></script>
 </body>
 </html>
