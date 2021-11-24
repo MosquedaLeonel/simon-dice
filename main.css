@@ -135,20 +135,21 @@ p {
 
 .rounds {
     color: white;
+    font-size: 24px;
 }
 
 .btn {
     padding: 0;
     margin: 0px;
     margin-left: 30px;
-    width: 28px;
-    height: 28px;
-    border-radius: 100%;
+    width: 52px;
+    height: 52px;
+    border-radius: 42px;
     border: none;
 }
 
 .btn:hover {
-    background: rgba(5,8,114,1);
+    background: #4E132E;
     color: white;
     transition: 500ms;
 }
@@ -184,3 +185,12 @@ p {
     border-radius: 50%;
     box-shadow: #000 0 -1px 7px 1px, inset #660 0 -1px 9px, #DD0 0 2px 12px;
 }
+
+img {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+

@@ -3,30 +3,29 @@ let playerSequence = [];
 let round = 0;
 const colors = ['red', 'blue', 'green', 'yellow'];
 
-document.querySelector(`.btn`).onclick = startGame;
+document.querySelector('#startBtn').onclick = startGame;
 
-ledHandle('red');
+setHandleColor('red');
 
 function startGame (){
     resetGame();
     enableDashboard();
-    roundHandle();
+    handleRound();
 }
 
 function resetGame (){
     machineSequence = [];
     playerSequence = [];
     round = 0;
-    document.querySelector('.box-state').classList.remove('lose');
-    buttonHandle('play_circle_filled');
+    setButton('icons/play-solid.svg');
 }
 
-function stateHandle(text) {
+function setState(text) {
     document.querySelector('.state').textContent = text;
 
 }
 
-function ledHandle (color) {
+function setHandleColor(color) {
     const led = document.querySelector('#led');
     
     const ledColors = ['yellow', 'red', 'green'];
@@ -38,9 +37,9 @@ function ledHandle (color) {
     led.classList.add(`led-${color}`);
 }
 
-function buttonHandle(value){
-    const $button = document.querySelector('.btn span');
-    $button.textContent = value;
+function setButton(value){
+    const $button = document.querySelector('.btn img');
+    $button.src = value;
 }
 
 function enableDashboard() {
@@ -50,23 +49,24 @@ function enableDashboard() {
     }
 }
 
-function disableDashboard(color, class1, class2) {
+function disableDashboardColor(color, class1, class2) {
     document.querySelector(`#${color}`).classList.remove(`enabled`, 'disabled', `${color}-disabled`, `${color}`)
     document.querySelector(`#${color}`).classList.add(class1, class2);
 }
 
-function roundHandle() {
-    stateHandle('Wait your turn!');
-    ledHandle('yellow');
+function handleRound() {
+    setState('Wait your turn!');
+    setHandleColor('yellow');
     blockPlayerInput();
-    
-    generateRandomColor()
+
+    const randomColor = generateRandomColor()
+    machineSequence.push(randomColor);
 
     const DELAY_PLAYER_TURN = (machineSequence.length + 1) * 1000;
 
     machineSequence.forEach(function($color, index) {
         for (let color of colors){
-            disableDashboard(`${color}`, 'disabled', `${color}-disabled`);
+            disableDashboardColor(`${color}`, 'disabled', `${color}-disabled`);
         }
         const DELAY_MS = (index + 1) * 1000;
         setTimeout(function(){
@@ -75,15 +75,15 @@ function roundHandle() {
     });
 
     setTimeout(function(){
-        stateHandle('Your turn!');
-        ledHandle('green');
+        setState('Your turn!');
+        setHandleColor('green');
         enableDashboard();
         unlockPlayerInput();
     }, DELAY_PLAYER_TURN);
 
     playerSequence = [];
     round++;
-    upgradeRounds(round);
+    incrementRounds(round.toString());
 }
 
 function blockPlayerInput(){
@@ -100,8 +100,8 @@ function unlockPlayerInput(){
 }
 
 function generateRandomColor() {
-    let index = Math.floor(Math.random() * 4);
-    return machineSequence.push(colors[index]);
+    let index = Math.floor(Math.random() * colors.length);
+    return colors[index];
 }
 
 function highlightColor(color) {
@@ -120,31 +120,27 @@ function playerInputHandle(e){
     const $machineColor = machineSequence[playerSequence.length - 1];
 
     if ($color.id !== $machineColor) {
-        lose();
+        handleLose();
         return;
     }
 
     if (playerSequence.length === machineSequence.length) {
         blockPlayerInput();
-        setTimeout(roundHandle, 1000);
+        setTimeout(handleRound, 1000);
     }
 }
 
-function upgradeRounds(round){
-    if (round < 10) {
-    document.querySelector(".rounds").textContent = `0${round}`;
-    } else{
-        document.querySelector(".rounds").textContent = `${round}`;
-    }
+function incrementRounds(round){
+    document.querySelector(".rounds").textContent = `${round.padStart(2, 0)}`;
 }
 
-function lose(){
+function handleLose(){
     blockPlayerInput();
-    buttonHandle('replay');
+    setButton('icons/undo-alt-solid.svg');
     colors.forEach(function(color){
-        disableDashboard(`${color}`, `disabled`, `${color}-disabled`);
+        disableDashboardColor(`${color}`, `disabled`, `${color}-disabled`);
     });
-    stateHandle(`You lost! Try again.`);
-    ledHandle('red');
+    setState(`You lost! Try again.`);
+    setHandleColor('red');
 }
 
